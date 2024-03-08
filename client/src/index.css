@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#disabled-input {
+    height: 100px; /* Adjust the height as needed */
+    /* You can also adjust other properties here */
+}
+
+.w-200 {
+    width: 200px;
+}
+
+.h-100 {
+    height: 100px;
+}
