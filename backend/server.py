@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from darkpattern import gemini
+from darkpattern import gemini, gemini_textmani
+from TextManipulation import txtmani
 
 # Create a Flask application
 app = Flask(__name__)
@@ -16,7 +17,9 @@ def process_link():
                 link = json_data['link']
                 # Assuming gemini function returns a string, modify as needed
                 res = gemini(link)
-                return jsonify({"message": res, "link": link}), 200
+                txtmani(link)
+                res2 = gemini_textmani()
+                return jsonify({"text manipulation" : res2,"message": res, "link": link}), 200
             else:
                 return jsonify({"error": "JSON object should contain 'link' key"}), 400
         else:
