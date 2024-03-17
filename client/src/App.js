@@ -25,7 +25,7 @@ const requestOptions = {
   redirect: "follow"
 };
   
-fetch("https://supreme-spork-59wv97rppg9f656-5000.app.github.dev/process_link", requestOptions)
+fetch("https://dark-pattern.onrender.com/process_link", requestOptions)
   .then(response => response.json())
   .then(data => {
     const summaryText = data.message.Summary;
