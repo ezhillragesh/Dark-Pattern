@@ -1,8 +1,5 @@
 /*global chrome*/
 import React from 'react';
-import {createRoot} from 'react-dom/client'
-import Markdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
 import './index.css';
 
 function currentUrl() {
@@ -28,11 +25,13 @@ const requestOptions = {
   redirect: "follow"
 };
   
-fetch("https://dark-pattern.onrender.com/process_link", requestOptions)
+fetch("https://supreme-spork-59wv97rppg9f656-5000.app.github.dev/process_link", requestOptions)
   .then(response => response.json())
   .then(data => {
     const summaryText = data.message.Summary;
-    console.log(summaryText);
+    const darkpatternText=data.message.TextManipulation;
+    // console.log(summaryText);
+    document.getElementById('darkpattern').value=darkpatternText;
     document.getElementById('txtComment').value = summaryText;
   })
   .catch(error => console.error(error));
@@ -54,7 +53,8 @@ function App() {
 
         <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={handleCheckNow}>Check now!</button>
         <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-3 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={currentUrl}>Current URL</button>
-        <textarea id="txtComment" className="h-100 border ml-3 mr-3 w-full border-black" disabled></textarea>
+        <textarea id="txtComment" placeholder="Your Privacy Summary will be shown here" className="h-100 border ml-3 mr-3 w-full border-black"  disabled> </textarea>
+        <textarea id="darkpattern" className="h-100 border ml-3 mr-3 mt-5 w-full border-black" disabled></textarea>
       </div>
     </div>
   );
