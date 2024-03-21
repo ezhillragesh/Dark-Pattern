@@ -47,7 +47,7 @@ def gemini(link : str):
         print(response.text)
         text_mani = response.text
     f.close()
-    return {"Text Manipulation" : text_mani}
+    return {"TextManipulation" : text_mani}
 
 def gemini_summary(link : str):
     # links  = main(link)

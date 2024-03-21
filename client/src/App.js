@@ -25,18 +25,32 @@ const requestOptions = {
   redirect: "follow"
 };
   
-fetch("https://dark-pattern.onrender.com/process_link", requestOptions)
+fetch("https://dark-pattern.onrender.com/summary", requestOptions)
   .then(response => response.json())
   .then(data => {
     const summaryText = data.message.Summary;
-    const darkpatternText=data.message.TextManipulation;
+    // const darkpatternText=data.message.TextManipulation;
     // console.log(summaryText);
-    document.getElementById('darkpattern').value=darkpatternText;
+    
     document.getElementById('txtComment').value = summaryText;
   })
   .catch(error => console.error(error));
 
 }
+
+fetch("https://dark-pattern.onrender.com/process_link", requestOptions)
+  .then(response => response.json())
+  .then(data => {
+    // const summaryText = data.message.Summary;
+    const darkpatternText=data.message.TextManipulation;
+    // console.log(summaryText);
+    document.getElementById('darkpattern').value=darkpatternText;
+  })
+  .catch(error => console.error(error));
+
+}
+
+
 
 function App() {
   const handleCheckNow = () => {
