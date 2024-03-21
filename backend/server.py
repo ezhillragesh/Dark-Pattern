@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from darkpattern import gemini
+from darkpattern import gemini, gemini_summary
 from TextManipulation import txtmani
 
 # Create a Flask application
@@ -17,6 +17,23 @@ def process_link():
                 link = json_data['link']
                 txtmani(link)
                 res = gemini(link)
+                return jsonify({"message": res, "link": link}), 200
+            else:
+                return jsonify({"error": "JSON object should contain 'link' key"}), 400
+        else:
+            return jsonify({"error": "Request body should be in JSON format"}), 400
+    except Exception as e:
+        # Handle any unexpected exceptions gracefully
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/summary', methods=['POST'])
+def summary():
+    try:
+        if request.is_json:
+            json_data = request.json
+            if 'link' in json_data:
+                link = json_data['link']
+                res = gemini_summary(link)
                 return jsonify({"message": res, "link": link}), 200
             else:
                 return jsonify({"error": "JSON object should contain 'link' key"}), 400

@@ -46,9 +46,6 @@ def extract_tag_content(url, tag):
   return content
 
 def txtmani(target_url : str):
-    # Example usage
-    #target_url = "https://www.booking.com/index.en-gb.html?label=gen173nr-1BCAEoggI46AdIM1gEaGyIAQGYAQm4AQfIAQzYAQHoAQGIAgGoAgO4Au3bx68GwAIB0gIkOWM1MTI5OTQtMDU2MS00MmYwLTgxMjktNmEwNDkyYmQ5YjVm2AIF4AIB&sid=8b1cec082ed78680427b987b53ee5660&keep_landing=1&sb_price_type=total&"  # Replace with target website
-    # Replace with the target website
     text_containing_tags = [
         "p", "h1", "h2", "h3", "h4", "h5", "h6", 
         "span", "div",  
